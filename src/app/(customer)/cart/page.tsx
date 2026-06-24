@@ -1,6 +1,5 @@
 'use client'
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Trash2, Minus, Plus, ShoppingBag, ArrowRight, Gem } from 'lucide-react'
 import { useCart } from '@/lib/context/CartContext'
@@ -47,7 +46,7 @@ export default function CartPage() {
                 >
                   <div className="w-24 h-24 rounded-xl bg-[#111] flex-shrink-0 overflow-hidden relative">
                     {item.image_url ? (
-                      <Image src={item.image_url} alt={item.name} fill className="object-cover" />
+                      <img src={item.image_url} alt={item.name} className="w-full h-full object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center"><Gem className="w-8 h-8 text-[#D4AF37] opacity-20" /></div>
                     )}
