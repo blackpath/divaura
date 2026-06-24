@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 43 63% 52%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 80%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 43 63% 52%;
+    --accent-foreground: 0 0% 5%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 10%;
+    --input: 0 0% 10%;
+    --ring: 43 63% 52%;
+    --radius: 0.875rem;
+
+    /* Divaura tokens */
+    --gold: #D4AF37;
+    --gold-light: #E8CC6A;
+    --gold-dark: #A8892A;
+    --luxury-black: #090909;
+    --luxury-card: #151515;
+  }
+}
+
+@layer base {
+  * { border-color: hsl(var(--border)); }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: #090909;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #090909; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #D4AF37, #A8892A);
+    border-radius: 999px;
+  }
+}
+
+@layer utilities {
+  /* Gold text gradient */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #D4AF37 0%, #F5D76E 50%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Display font shortcut */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Glass card */
+  .glass-card {
+    background: rgba(21, 21, 21, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    border-radius: 20px;
+  }
+
+  .glass-card-hover {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(212, 175, 55, 0.35);
+    box-shadow: 0 8px 40px rgba(212, 175, 55, 0.08), 0 0 0 1px rgba(212, 175, 55, 0.05);
+    transform: translateY(-2px);
+  }
+
+  /* Gold shimmer effect */
+  .shimmer-gold {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.08) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* Gold glow */
+  .glow-gold {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.15), 0 0 60px rgba(212, 175, 55, 0.05);
+  }
+
+  .glow-gold-strong {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.25), 0 0 80px rgba(212, 175, 55, 0.1);
+  }
+
+  /* Luxury border */
+  .border-gold-subtle {
+    border-color: rgba(212, 175, 55, 0.15);
+  }
+  .border-gold-medium {
+    border-color: rgba(212, 175, 55, 0.35);
+  }
+
+  /* Premium button */
+  .btn-gold {
+    background: linear-gradient(135deg, #D4AF37 0%, #E8CC6A 50%, #D4AF37 100%);
+    background-size: 200% 100%;
+    transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    color: #090909;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .btn-gold:hover {
+    background-position: right center;
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
+    transform: translateY(-1px);
+  }
+  .btn-gold:active {
+    transform: translateY(0);
+  }
+
+  /* Input luxury style */
+  .input-luxury {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 14px;
+    color: #fff;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .input-luxury:focus {
+    outline: none;
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
+  }
+  .input-luxury::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Skeleton */
+  .skeleton-luxury {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 0%,
+      rgba(212,175,55,0.08) 50%,
+      rgba(255,255,255,0.03) 100%
+    );
+    background-size: 400% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+    border-radius: 12px;
+  }
+
+  /* Text utilities */
+  .text-muted-luxury {
+    color: #B3B3B3;
+  }
+
+  .tracking-luxury {
+    letter-spacing: 0.2em;
+  }
+
+  /* Section divider */
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
+  }
+}
