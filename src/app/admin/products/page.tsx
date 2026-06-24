@@ -89,7 +89,7 @@ export default function AdminProductsPage() {
                     <div className="flex items-center gap-3">
                       <div className="w-11 h-11 rounded-xl bg-[#111] flex-shrink-0 overflow-hidden relative">
                         {/* THE FIX IS HERE ON THIS NEXT LINE */}
-                        {p.image_urls?.[0] ? <img src={p.image_urls[0]} alt={p.name} className="w-full h-full object-cover" /> : <Gem className="w-5 h-5 text-[#D4AF37] opacity-20 m-3" />}
+                        {p.image_urls?.[0] ? <img src={p.image_urls[0]} alt={p.name}/*hell*/ className="w-full h-full object-cover" /> : <Gem className="w-5 h-5 text-[#D4AF37] opacity-20 m-3" />}
                       </div>
                       <span className="font-medium text-white line-clamp-1">{p.name}</span>
                     </div>
