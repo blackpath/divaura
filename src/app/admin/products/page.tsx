@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Pencil, Trash2, Upload, X, Gem } from 'lucide-react'
 import { useAdmin } from '@/lib/hooks/useAdmin'
@@ -87,9 +88,9 @@ export default function AdminProductsPage() {
                 <motion.tr key={p.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="hover:bg-white/1 transition-colors">
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-3">
-                     <div className="w-11 h-11 rounded-xl bg-[#111] flex-shrink-0 overflow-hidden relative">
-  {p.image_urls?.[0] ? <img src={p.image_urls[0]} alt={p.name} className="w-full h-full object-cover" /> : <Gem className="w-5 h-5 text-[#D4AF37] opacity-20 m-3" />}
-</div>
+                      <div className="w-11 h-11 rounded-xl bg-[#111] flex-shrink-0 overflow-hidden relative">
+                        {p.image_urls?.[0] ? <Image src={p.image_urls[0]} alt={p.name} fill className="object-cover" /> : <Gem className="w-5 h-5 text-[#D4AF37] opacity-20 m-3" />}
+                      </div>
                       <span className="font-medium text-white line-clamp-1">{p.name}</span>
                     </div>
                   </td>
@@ -165,3 +166,16 @@ export default function AdminProductsPage() {
                   </div>
                 </div>
               </div>
+              <div className="p-6 border-t border-[rgba(212,175,55,0.08)] flex gap-3">
+                <button onClick={() => setShowForm(false)} className="flex-1 border border-[rgba(212,175,55,0.12)] text-[#B3B3B3] text-sm py-3 rounded-xl hover:text-white transition-colors">Cancel</button>
+                <motion.button onClick={handleSave} disabled={saving} className="flex-1 text-sm py-3 rounded-xl font-medium text-black disabled:opacity-50" style={{ background: 'linear-gradient(135deg, #D4AF37, #E8CC6A)' }} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  {saving ? 'Saving…' : editing ? 'Update' : 'Create'}
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
